@@ -21,7 +21,7 @@ public class PokeballBehaviour(IntPtr ptr) : MonoBehaviour(ptr)
     {
         renderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<CircleCollider2D>();
-        sound = gameObject.AddComponent<AudioSource>();
+        sound = transform.parent.GetComponent<AudioSource>();
 
         renderer.material.shader = Shader.Find("Sprites/Outline");
     }
@@ -39,68 +39,37 @@ public class PokeballBehaviour(IntPtr ptr) : MonoBehaviour(ptr)
             return;
         }
 
+        var inputPosition = Input.mousePosition;
+        if (Input.touchCount > 0)
+        {
+            inputPosition = Input.GetTouch(0).position;
+        }
+        var worldPoint = Camera.main.ScreenToWorldPoint(inputPosition);
+        if (collider2D.OverlapPoint(worldPoint))
+        {
+            if (!isMouseOver)
+            {
+                isMouseOver = true;
+                sound.PlayOneShot(PokeResources.HoverSound);
+            }
+
+            renderer.material.SetColor(ShaderID.OutlineColor, Color.yellow);
+
+            if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
+            {
+                sound.PlayOneShot(PokeResources.ClickSound);
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            isMouseOver = false;
+        }
+
+        renderer.material.SetFloat(ShaderID.Outline, isMouseOver ? 1f : 0f);
+
         _time += Time.deltaTime;
         var color = Color.Lerp(_colors[0], _colors[1], Mathf.Abs(Mathf.Sin(_time*3)));
-        renderer.material.SetColor(ShaderID.AddColor, !isMouseOver ? color : Color.cyan);
-    }
-
-    public void OnMouseEnter()
-    {
-        if (!canCollect)
-        {
-            return;
-        }
-
-        sound.PlayOneShot(PokeResources.HoverSound);
-    }
-
-    public void OnMouseDown()
-    {
-        if (!canCollect)
-        {
-            return;
-        }
-
-        sound.PlayOneShot(PokeResources.ClickSound);
-        renderer.material.SetFloat(ShaderID.Outline, 1f);
-        renderer.material.SetColor(ShaderID.OutlineColor, Color.white);
-    }
-        
-    public void OnMouseUp()
-    {
-        if (!canCollect)
-        {
-            return;
-        }
-
-        renderer.enabled = false;
-        collider2D.enabled = false;
-    }
-
-    public void OnMouseOver()
-    {
-        isMouseOver = true;
-        if (!canCollect)
-        {
-            return;
-        }
-
-        renderer.material.SetFloat(ShaderID.Outline, 1f);
-
-        if (!Input.GetMouseButton(0))
-        {
-            renderer.material.SetColor(ShaderID.OutlineColor, Color.yellow);
-        }
-    }
-    public void OnMouseExit()
-    {
-        isMouseOver = false;
-        if (!canCollect)
-        {
-            return;
-        }
-
-        renderer.material.SetFloat(ShaderID.Outline, 0f);
-        renderer.material.SetColor(ShaderID.AddColor, Color.clear);
+        renderer.material.SetColor(ShaderID.AddColor, isMouseOver ? Color.cyan : color);
     }
 }

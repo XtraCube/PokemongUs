@@ -4,6 +4,7 @@
         <Version>1.0.0</Version>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <DebugType>embedded</DebugType>
         <Description>Replaces the original Dropship Lobby with a Pokecenter!</Description>
         <Authors>XtraCube</Authors>
     </PropertyGroup>

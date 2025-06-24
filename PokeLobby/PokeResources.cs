@@ -24,7 +24,13 @@ public static class PokeResources
 
     public static void Load()
     {
-        var bundleStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PokeLobby.Resources.lobby")
+        var isAndroid = Application.platform == RuntimePlatform.Android;
+
+        var resourceName = isAndroid
+            ? "PokeLobby.Resources.lobby-android"
+            : "PokeLobby.Resources.lobby-win";
+
+        var bundleStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)
             ?? throw new System.Exception("Failed to load embedded asset bundle: lobby");
 
         var data = bundleStream.ReadBytes();
