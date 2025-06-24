@@ -14,7 +14,12 @@ namespace PokeLobby;
 public partial class PokeLobbyPlugin : BasePlugin
 {
     private Harmony Harmony { get; } = new(Id);
-    private static Vector2[] SpawnPositions { get; } = Enumerable.Repeat(new Vector2(-3.1f, 3.3f), 5).Concat(Enumerable.Repeat(new Vector2(3.3f, 2f), 5)).ToArray();
+    private static Vector2[] SpawnPositions { get; } = 
+        Enumerable.Repeat(new Vector2(-3.1f, 3.3f), 2)
+            .Concat(Enumerable.Repeat(new Vector2(-3.1f, 2.8f), 3))
+            .Concat(Enumerable.Repeat(new Vector2(1.9f, 2.35f), 3))
+            .Concat(Enumerable.Repeat(new Vector2(2.4f, 2.35f), 3))
+            .ToArray();
 
     public override void Load()
     {
