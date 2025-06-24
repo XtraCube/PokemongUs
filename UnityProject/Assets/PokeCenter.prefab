@@ -250,8 +250,8 @@ Transform:
   m_GameObject: {fileID: 1681116679041005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.234, y: 0.272, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
+  m_LocalPosition: {x: -0.2389, y: 0.2817, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.4, z: 1.4117646}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4000128810831777}
@@ -297,12 +297,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fcaf4a46b0c1078438a05e8011a919cd, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 5096acb01de7c4f4493f846f332c59b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.19591837, y: 0.29795918}
+  m_Size: {x: 0.13061224, y: 0.13061224}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -340,18 +340,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03453832}
+  m_Offset: {x: -0.00088247657, y: -0.028030246}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.19591837, y: 0.17959183}
-    newSize: {x: 0.19591837, y: 0.29795918}
+    oldSize: {x: 0.13061224, y: 0.13061224}
+    newSize: {x: 0.13061224, y: 0.13061224}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19591837, y: 0.24866848}
+  m_Size: {x: 0.15179473, y: 0.17527586}
   m_EdgeRadius: 0
 --- !u!114 &642174091256950530
 MonoBehaviour:
@@ -392,8 +392,8 @@ Transform:
   m_GameObject: {fileID: 1910442411595946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 0.399, z: 0}
-  m_LocalScale: {x: 0.31, y: 0.31, z: 1}
+  m_LocalPosition: {x: 0.07346, y: 0.4121, z: 0}
+  m_LocalScale: {x: 0.3242528, y: 0.33352545, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4000128810831777}
