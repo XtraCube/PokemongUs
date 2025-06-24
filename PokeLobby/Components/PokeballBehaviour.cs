@@ -30,7 +30,7 @@ public class PokeballBehaviour(IntPtr ptr) : MonoBehaviour(ptr)
 
     public void Start()
     {
-        readyTimestamp = Time.time + UnityEngine.Random.Range(3f, 8f);
+        readyTimestamp = Time.time + UnityEngine.Random.Range(1f, 8f);
     }
         
     public void Update()
