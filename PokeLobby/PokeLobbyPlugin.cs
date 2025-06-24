@@ -23,6 +23,7 @@ public partial class PokeLobbyPlugin : BasePlugin
 
     public override void Load()
     {
+        ClassInjector.RegisterTypeInIl2Cpp<PikachuBehaviour>();
         ClassInjector.RegisterTypeInIl2Cpp<PokeballBehaviour>();
         ClassInjector.RegisterTypeInIl2Cpp<PokeballMenu>();
         ClassInjector.RegisterTypeInIl2Cpp<PokeballConsole>(new RegisterTypeOptions

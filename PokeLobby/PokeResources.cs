@@ -1,6 +1,8 @@
-﻿using System.Reflection;
+﻿using System.Linq;
+using System.Reflection;
 using Cpp2IL.Core.Extensions;
 using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 
 namespace PokeLobby;
@@ -16,6 +18,8 @@ public static class PokeResources
     public static AudioClip SlideSound { get; private set; }
     public static AudioClip HoverSound { get; private set; }
     public static AudioClip ClickSound { get; private set; }
+
+    public static Sprite[] PikachuSprites { get; private set; }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     public static void Load()
@@ -25,8 +29,7 @@ public static class PokeResources
 
         var data = bundleStream.ReadBytes();
 
-        Bundle = AssetBundle.LoadFromMemory(data)
-            ?? throw new System.Exception("Failed to load asset bundle from memory: lobby");
+        Bundle = AssetBundle.LoadFromMemory(data) ?? throw new System.Exception("Failed to load asset bundle from memory: lobby");
 
         PokeCenterPrefab = Bundle.LoadAsset("PokeCenter", Il2CppType.Of<GameObject>()).Cast<GameObject>();
         PokeballMachinePrefab = Bundle.LoadAsset("PokeballMenu", Il2CppType.Of<GameObject>()).Cast<GameObject>();
@@ -34,11 +37,21 @@ public static class PokeResources
         HoverSound = Bundle.LoadAsset("Hover", Il2CppType.Of<AudioClip>()).Cast<AudioClip>();
         ClickSound = Bundle.LoadAsset("Collect", Il2CppType.Of<AudioClip>()).Cast<AudioClip>();
 
+        PikachuSprites = Bundle.LoadAssetWithSubAssets("Pikachu", Il2CppType.Of<Sprite>()).Select(x=>x.Cast<Sprite>()).ToArray();
+        if (PikachuSprites.Length == 0)
+        {
+            throw new System.Exception("Failed to load Pikachu sprites from asset bundle: lobby");
+        }
+
         PokeCenterPrefab.DontDestroy();
         PokeballMachinePrefab.DontDestroy();
         SlideSound.DontDestroy();
         HoverSound.DontDestroy();
         ClickSound.DontDestroy();
+        foreach (var sprite in PikachuSprites)
+        {
+            sprite.DontDestroy();
+        }
     }
 
     private static void DontDestroy(this Object @object)

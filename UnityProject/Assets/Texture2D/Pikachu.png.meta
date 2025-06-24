@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a3feac8195d83d4ebd78f92049e293c
+guid: 7f99dccacb927ce46a67939878d2cc10
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -30,7 +30,7 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 4
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
@@ -65,14 +65,14 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TVSpriteSheet_0
+      name: Pikachu_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 193
-        width: 76
-        height: 45
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f46b8a9962f55ed41abafe3612e9a74a
-      internalID: -1701781919
+      spriteID: 170c656610320864db893c5cec063c4e
+      internalID: -1070538829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TVSpriteSheet_1
+      name: Pikachu_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 127
-        width: 76
-        height: 47
+        x: 16
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2f05be914c8fa64abb7c3ff6db8a965
-      internalID: 322340970
+      spriteID: 441519a604025fb489c1a1c49f08369a
+      internalID: -1440245771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TVSpriteSheet_2
+      name: Pikachu_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 67
-        width: 76
-        height: 44
+        x: 33
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59f15e273b89dde4c8a5e2625d263bf2
-      internalID: 1381048299
+      spriteID: 2fb71a298c3a8a6439ee8144f2f33d3b
+      internalID: -2049732902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TVSpriteSheet_3
+      name: Pikachu_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3
-        width: 76
-        height: 45
+        x: 51
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc81b032cbf49394eb6075624842358f
-      internalID: -684513369
+      spriteID: 9a9bb808cf4ff75418da309520a881bd
+      internalID: 1471606726
       vertices: []
       indices: 
       edges: []
@@ -196,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 702cfb9bde4c238449fa226204dd6929
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -204,12 +204,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TVSpriteSheet_0: -1701781919
-      TVSpriteSheet_1: 322340970
-      TVSpriteSheet_2: 1381048299
-      TVSpriteSheet_3: -684513369
+      Pikachu_0: -1070538829
+      Pikachu_1: -1440245771
+      Pikachu_2: -2049732902
+      Pikachu_3: 1471606726
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: lobby
   assetBundleVariant: 

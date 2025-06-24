@@ -13,6 +13,7 @@ public class PokeballMenu(IntPtr ptr) : Minigame(ptr)
     {
         OpenSound = PokeResources.SlideSound;
         CloseSound = PokeResources.SlideSound;
+        logger = new Logger(Logger.Category.Gameplay, "PokeballMenu");
     }
 
     public void Start()
