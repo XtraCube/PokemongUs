@@ -20,7 +20,7 @@ public static class PokeResources
 
     public static void Load()
     {
-        var bundleStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PokemonLobby.Resources.lobby")
+        var bundleStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("PokeLobby.Resources.lobby")
             ?? throw new System.Exception("Failed to load embedded asset bundle: lobby");
 
         var data = bundleStream.ReadBytes();
