@@ -70,9 +70,5 @@ public partial class PokeLobbyPlugin : BasePlugin
 
         // move wardrobe console to table
         lobby.transform.Find("panel_Wardrobe").localPosition = new Vector3(2.13f, 1.57f, -9.9f);
-
-        // disable camera shake
-        HudManager.Instance.PlayerCam.shakeAmount = 0;
-        HudManager.Instance.PlayerCam.shakePeriod = 0;
     }
 }
