@@ -44,10 +44,10 @@ public partial class PokeLobbyPlugin : BasePlugin
         lobby.SpawnPositions = SpawnPositions;
 
         // remove original lobby background, collider, and boxes
-        Object.Destroy(lobby.transform.Find("Background").gameObject);
-        Object.Destroy(lobby.transform.Find("RightBox").gameObject);
-        Object.Destroy(lobby.transform.Find("Leftbox").gameObject);
-        Object.Destroy(lobby.GetComponent<EdgeCollider2D>());
+        Object.DestroyImmediate(lobby.transform.Find("Background").gameObject);
+        Object.DestroyImmediate(lobby.transform.Find("RightBox").gameObject);
+        Object.DestroyImmediate(lobby.transform.Find("Leftbox").gameObject);
+        Object.DestroyImmediate(lobby.GetComponent<EdgeCollider2D>());
 
         // move engines to correct positions
         var rEngine = lobby.transform.Find("RightEngine");
@@ -58,14 +58,15 @@ public partial class PokeLobbyPlugin : BasePlugin
         lEngine.position = new Vector3(-5.1f, 1.5f, 10.5f);
         lEngine.localScale = new Vector3(0.8f, 0.8f, 1f);
 
-        // move options console to front counter
+        // adjust small box position and remove collider
         var smallBox = lobby.transform.Find("SmallBox");
-        smallBox.localPosition = new Vector3(0.9f, 2.9f, -9.9f);
-        smallBox.GetComponentInChildren<SpriteRenderer>().flipX = true;
 
         // destroy options console box and collider
-        Object.Destroy(smallBox.GetComponent<SpriteRenderer>());
-        Object.Destroy(smallBox.GetComponent<PolygonCollider2D>());
+        Object.DestroyImmediate(smallBox.GetComponent<SpriteRenderer>());
+        Object.DestroyImmediate(smallBox.GetComponent<PolygonCollider2D>());
+
+        smallBox.localPosition = new Vector3(0.9f, 2.9f, -9.9f);
+        smallBox.GetComponentInChildren<SpriteRenderer>().flipX = true;
 
         // move wardrobe console to table
         lobby.transform.Find("panel_Wardrobe").localPosition = new Vector3(2.13f, 1.57f, -9.9f);
