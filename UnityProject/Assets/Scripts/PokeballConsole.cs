@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PokemonLobby.Components
+namespace PokeLobby.Components
 {
     public class PokeballConsole : MonoBehaviour
     {

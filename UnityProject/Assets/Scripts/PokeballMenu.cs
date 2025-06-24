@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PokemonLobby.Components
+namespace PokeLobby.Components
 {
     public class PokeballMenu : MonoBehaviour
     {
