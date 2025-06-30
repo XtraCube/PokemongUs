@@ -3,6 +3,8 @@ using System.Reflection;
 using Cpp2IL.Core.Extensions;
 using Il2CppInterop.Runtime;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using Reactor.Utilities;
+using Reactor.Utilities.Extensions;
 using UnityEngine;
 
 namespace PokeLobby;
@@ -24,26 +26,19 @@ public static class PokeResources
 
     public static void Load()
     {
-        var isAndroid = Application.platform == RuntimePlatform.Android;
+        Bundle = AssetBundleManager.Load("lobby");
+        if (Bundle == null)
+        {
+            throw new System.Exception("Failed to load asset bundle: lobby");
+        }
 
-        var resourceName = isAndroid
-            ? "PokeLobby.Resources.lobby-android"
-            : "PokeLobby.Resources.lobby-win";
-
-        var bundleStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)
-            ?? throw new System.Exception("Failed to load embedded asset bundle: lobby");
-
-        var data = bundleStream.ReadBytes();
-
-        Bundle = AssetBundle.LoadFromMemory(data) ?? throw new System.Exception("Failed to load asset bundle from memory: lobby");
-
-        PokeCenterPrefab = Bundle.LoadAsset("PokeCenter", Il2CppType.Of<GameObject>()).Cast<GameObject>();
-        PokeballMachinePrefab = Bundle.LoadAsset("PokeballMenu", Il2CppType.Of<GameObject>()).Cast<GameObject>();
-        SlideSound = Bundle.LoadAsset("Slide", Il2CppType.Of<AudioClip>()).Cast<AudioClip>();
-        HoverSound = Bundle.LoadAsset("Hover", Il2CppType.Of<AudioClip>()).Cast<AudioClip>();
-        ClickSound = Bundle.LoadAsset("Collect", Il2CppType.Of<AudioClip>()).Cast<AudioClip>();
-
-        PikachuSprites = Bundle.LoadAssetWithSubAssets("Pikachu", Il2CppType.Of<Sprite>()).Select(x=>x.Cast<Sprite>()).ToArray();
+        PokeCenterPrefab = Bundle.LoadAsset<GameObject>("PokeCenter")!;
+        PokeballMachinePrefab = Bundle.LoadAsset<GameObject>("PokeballMenu")!;
+        SlideSound = Bundle.LoadAsset<AudioClip>("Slide")!;
+        HoverSound = Bundle.LoadAsset<AudioClip>("Hover")!;
+        ClickSound = Bundle.LoadAsset<AudioClip>("Collect")!;
+        PikachuSprites = Bundle.LoadAssetWithSubAssets("Pikachu", Il2CppType.Of<Sprite>()).Select(x => x.Cast<Sprite>()).ToArray();
+        
         if (PikachuSprites.Length == 0)
         {
             throw new System.Exception("Failed to load Pikachu sprites from asset bundle: lobby");
@@ -58,11 +53,5 @@ public static class PokeResources
         {
             sprite.DontDestroy();
         }
-    }
-
-    private static void DontDestroy(this Object @object)
-    {
-        @object.hideFlags |= HideFlags.HideAndDontSave;
-        Object.DontDestroyOnLoad(@object);
     }
 }

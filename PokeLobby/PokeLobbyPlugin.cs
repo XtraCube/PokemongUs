@@ -4,6 +4,11 @@ using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using Il2CppInterop.Runtime.Injection;
 using PokeLobby.Components;
+using Reactor;
+using Reactor.Networking;
+using Reactor.Networking.Attributes;
+using Reactor.Utilities;
+using Reactor.Utilities.Extensions;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -11,6 +16,8 @@ namespace PokeLobby;
 
 [BepInAutoPlugin("dev.xtracube.pokelobby", "Pokemon Lobby Mod")]
 [BepInProcess("Among Us.exe")]
+[BepInDependency(ReactorPlugin.Id)]
+[ReactorModFlags(ModFlags.RequireOnAllClients)]
 public partial class PokeLobbyPlugin : BasePlugin
 {
     private Harmony Harmony { get; } = new(Id);
@@ -23,13 +30,7 @@ public partial class PokeLobbyPlugin : BasePlugin
 
     public override void Load()
     {
-        ClassInjector.RegisterTypeInIl2Cpp<PikachuBehaviour>();
-        ClassInjector.RegisterTypeInIl2Cpp<PokeballBehaviour>();
-        ClassInjector.RegisterTypeInIl2Cpp<PokeballMenu>();
-        ClassInjector.RegisterTypeInIl2Cpp<PokeballConsole>(new RegisterTypeOptions
-        {
-            Interfaces = new Il2CppInterfaceCollection([typeof(IUsable)])
-        });
+        ReactorCredits.Register("PokeLobby - XtraCube", Version.Split("+")[0], false, ReactorCredits.AlwaysShow);
         PokeResources.Load();
         Harmony.PatchAll();
     }
@@ -50,10 +51,10 @@ public partial class PokeLobbyPlugin : BasePlugin
         lobby.SpawnPositions = SpawnPositions;
 
         // remove original lobby background, collider, and boxes
-        Object.DestroyImmediate(lobby.transform.Find("Background").gameObject);
-        Object.DestroyImmediate(lobby.transform.Find("RightBox").gameObject);
-        Object.DestroyImmediate(lobby.transform.Find("Leftbox").gameObject);
-        Object.DestroyImmediate(lobby.GetComponent<EdgeCollider2D>());
+        lobby.transform.Find("Background").gameObject.DestroyImmediate();
+        lobby.transform.Find("RightBox").gameObject.DestroyImmediate();
+        lobby.transform.Find("Leftbox").gameObject.DestroyImmediate();
+        lobby.GetComponent<EdgeCollider2D>().DestroyImmediate();
 
         // move engines to correct positions
         var rEngine = lobby.transform.Find("RightEngine");
@@ -68,8 +69,8 @@ public partial class PokeLobbyPlugin : BasePlugin
         var smallBox = lobby.transform.Find("SmallBox");
 
         // destroy options console box and collider
-        Object.DestroyImmediate(smallBox.GetComponent<SpriteRenderer>());
-        Object.DestroyImmediate(smallBox.GetComponent<PolygonCollider2D>());
+        smallBox.GetComponent<SpriteRenderer>().DestroyImmediate();
+        smallBox.GetComponent<PolygonCollider2D>().DestroyImmediate();
 
         smallBox.localPosition = new Vector3(0.9f, 2.9f, -9.9f);
         smallBox.GetComponentInChildren<SpriteRenderer>().flipX = true;

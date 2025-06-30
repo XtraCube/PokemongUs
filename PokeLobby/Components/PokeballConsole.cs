@@ -1,8 +1,10 @@
 ﻿using System;
+using Reactor.Utilities.Attributes;
 using UnityEngine;
 
 namespace PokeLobby.Components;
 
+[RegisterInIl2Cpp(typeof(IUsable))]
 public class PokeballConsole(IntPtr ptr) : MonoBehaviour(ptr)
 {
     public float UsableDistance => 1.4f;

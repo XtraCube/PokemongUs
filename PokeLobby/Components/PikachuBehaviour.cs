@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using BepInEx.Unity.IL2CPP.Utils.Collections;
 using Il2CppInterop.Runtime.Attributes;
+using Reactor.Utilities.Attributes;
 using UnityEngine;
 
 namespace PokeLobby.Components;
 
+[RegisterInIl2Cpp]
 public class PikachuBehaviour : MonoBehaviour
 {
     public List<Sprite> sprites = [];

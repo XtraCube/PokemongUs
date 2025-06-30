@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Reactor.Utilities.Attributes;
 using UnityEngine;
 
 namespace PokeLobby.Components;
 
+[RegisterInIl2Cpp]
 public class PokeballMenu(IntPtr ptr) : Minigame(ptr)
 {
     public List<PokeballBehaviour> pokeballs = [];

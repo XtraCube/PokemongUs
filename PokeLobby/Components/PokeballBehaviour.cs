@@ -1,8 +1,10 @@
 ﻿using System;
+using Reactor.Utilities.Attributes;
 using UnityEngine;
 
 namespace PokeLobby.Components;
 
+[RegisterInIl2Cpp]
 public class PokeballBehaviour(IntPtr ptr) : MonoBehaviour(ptr)
 {
     public AudioSource sound;
